@@ -70,19 +70,19 @@ function CustomToolbar() {
       <GridToolbarContainer>
         <Grid container>
           <Grid item xs={3}>
-            <GridToolbarColumnsButton localeText="xD" />
+            <GridToolbarColumnsButton sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
           </Grid>
           <Grid item xs={6}>
             <p>Paises</p>
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarFilterButton />
+            <GridToolbarFilterButton sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarExport />
+            <GridToolbarExport sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarExport />
+            <GridToolbarExport sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
           </Grid>
         </Grid>
       </GridToolbarContainer>
@@ -98,12 +98,12 @@ function App() {
         disableColumnMenu
         hideFooter
         hideFooterPagination
-        // localeText={esES.components.MuiDataGrid.defaultProps.localeText}
-        localeText={{
-          toolbarColumns: "",
-          toolbarFilters: "",
-          toolbarExport: "",
-        }}
+        localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+        // localeText={{
+        //   toolbarColumns: "",
+        //   toolbarFilters: "",
+        //   toolbarExport: "",
+        // }}
         rows={initialRows}
         columns={columns}
         components={{
