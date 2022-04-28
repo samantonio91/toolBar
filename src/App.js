@@ -1,9 +1,11 @@
 import * as React from "react";
+
 import { DataGrid, GridRowsProp, GridColDef, GridToolbarContainer,
   GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarExport,
   GridToolbarDensitySelector, } from "@mui/x-data-grid";
+  import AccessAlarmIcon from '@mui/icons-material/AccessAlarm';
 
   const columns = [
     {
@@ -38,9 +40,12 @@ import { DataGrid, GridRowsProp, GridColDef, GridToolbarContainer,
 function CustomToolbar() {
   return (
     <GridToolbarContainer>
-      <GridToolbarColumnsButton />
-      <GridToolbarFilterButton />
+
+      <GridToolbarColumnsButton startIcon={<AccessAlarmIcon />} />
+      
+      <p>Paises</p>
       {/* <GridToolbarDensitySelector /> */}
+      <GridToolbarFilterButton />
       <GridToolbarExport />
     </GridToolbarContainer>
   );
@@ -52,6 +57,15 @@ function App() {
       <DataGrid 
         rows={initialRows} 
         columns={columns} 
+        disableColumnMenu={true}
+        hideFooterPagination={true}
+        localeText={{
+          toolbarFilter: 'Size',
+          toolbarFilterLabel: 'Size',
+          toolbarFilterCompact: 'Large',
+          toolbarFilterStandard: 'Large',
+          toolbarFilterComfortable: 'Large',
+        }}
         components={{
           Toolbar: CustomToolbar,
         }} />
