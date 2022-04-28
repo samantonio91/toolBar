@@ -1,7 +1,10 @@
-import * as React from "react";
+import {useState} from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
+import { styled, alpha } from '@mui/material/styles';
+import SearchIcon from '@mui/icons-material/Search';
+import InputBase from '@mui/material/InputBase';
 import {
   DataGrid,
   esES,
@@ -63,11 +66,50 @@ const initialRows = [
     action: "Edit",
   },
 ];
+const Search = styled('div')(({ theme }) => ({
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginRight: theme.spacing(2),
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(3),
+    width: 'auto',
+  },
+}));
 
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: 'inherit',
+  '& .MuiInputBase-input': {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: '20ch',
+    },
+  },
+}));
 function CustomToolbar() {
+  const [activeSearch, setActiveSearch] = useState(false)
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <GridToolbarContainer>
+      <GridToolbarContainer sx={{diplay: 'flex', flexDirection: 'column'}}>
         <Grid container>
           <Grid item xs={3}>
             <GridToolbarColumnsButton sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
@@ -82,9 +124,20 @@ function CustomToolbar() {
             <GridToolbarExport sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarExport sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
+            <SearchIcon sx={{color: 'red'}} onClick={() => setActiveSearch(!activeSearch)} />
           </Grid>
         </Grid>
+        {activeSearch && <Grid container>
+          <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ 'aria-label': 'search' }}
+              />
+          </Search>
+        </Grid> }
       </GridToolbarContainer>
     </Box>
   );
