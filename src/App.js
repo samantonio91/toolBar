@@ -112,16 +112,25 @@ function CustomToolbar() {
       <GridToolbarContainer sx={{diplay: 'flex', flexDirection: 'column'}}>
         <Grid container>
           <Grid item xs={3}>
-            <GridToolbarColumnsButton sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
+            <GridToolbarColumnsButton
+              sx={{ fontSize: 0 }}
+              startIcon={<AccessAlarmIcon sx={{ color: "red" }} />}
+            />
           </Grid>
           <Grid item xs={6}>
             <p>Paises</p>
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarFilterButton sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
+            <GridToolbarFilterButton
+              sx={{ fontSize: 0 }}
+              startIcon={<AccessAlarmIcon sx={{ color: "red" }} />}
+            />
           </Grid>
           <Grid item xs={1}>
-            <GridToolbarExport sx={{color: 'transparent'}}  startIcon={<AccessAlarmIcon sx={{color: 'red'}} />}/>
+            <GridToolbarExport
+              sx={{ fontSize: 0 }}
+              startIcon={<AccessAlarmIcon sx={{ color: "red" }} />}
+            />
           </Grid>
           <Grid item xs={1}>
             <SearchIcon sx={{color: 'red'}} onClick={() => setActiveSearch(!activeSearch)} />
