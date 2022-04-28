@@ -1,29 +1,45 @@
 import * as React from "react";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
+import IconButton from "@mui/material/IconButton";
 import {
   DataGrid,
   esES,
-  GridRowsProp,
-  GridColDef,
   GridToolbarContainer,
   GridToolbarColumnsButton,
   GridToolbarFilterButton,
   GridToolbarExport,
-  GridToolbarDensitySelector,
 } from "@mui/x-data-grid";
 import AccessAlarmIcon from "@mui/icons-material/AccessAlarm";
 
 const columns = [
   {
     field: "first",
-    headerName: "First",
-    width: 140,
+    headerName: "Columna 1",
+    editable: false,
+    sortable: false,
+    flex: 1,
+    headerAlign: "center",
+    align: "center",
   },
   {
     field: "last",
-    headerName: "Last",
-    width: 140,
+    headerName: "Columna 2",
+    editable: false,
+    sortable: false,
+    flex: 1,
+    headerAlign: "center",
+    align: "center",
+  },
+  {
+    field: "action",
+    headerName: "Columna 3",
+    editable: false,
+    sortable: false,
+    flex: 1,
+    maxWidth: 200,
+    headerAlign: "center",
+    align: "center",
   },
 ];
 
@@ -32,16 +48,19 @@ const initialRows = [
     id: 1,
     first: "Jane",
     last: "Carter",
+    action: "Edit",
   },
   {
     id: 2,
     first: "Jack",
     last: "Smith",
+    action: "Edit",
   },
   {
     id: 3,
     first: "Gill",
     last: "Martin",
+    action: "Edit",
   },
 ];
 
@@ -51,7 +70,7 @@ function CustomToolbar() {
       <GridToolbarContainer>
         <Grid container>
           <Grid item xs={3}>
-            <GridToolbarColumnsButton startIcon={<AccessAlarmIcon />} />
+            <GridToolbarColumnsButton localeText="xD" />
           </Grid>
           <Grid item xs={6}>
             <p>Paises</p>
@@ -73,14 +92,20 @@ function CustomToolbar() {
 
 function App() {
   return (
-    <div style={{ height: 300, width: "100%" }}>
+    <div style={{ height: "100%", width: "80%" }}>
       <DataGrid
-        localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+        autoHeight
+        disableColumnMenu
+        hideFooter
+        hideFooterPagination
+        // localeText={esES.components.MuiDataGrid.defaultProps.localeText}
+        localeText={{
+          toolbarColumns: "",
+          toolbarFilters: "",
+          toolbarExport: "",
+        }}
         rows={initialRows}
         columns={columns}
-        disableColumnMenu={true}
-        hideFooter={true}
-        hideFooterPagination={true}
         components={{
           Toolbar: CustomToolbar,
         }}
