@@ -1,0 +1,15 @@
+.iconToolbar {
+    color:rgb(108,117,125);
+    font-size:20px!important;
+}
+
+.noLabel{
+    font-size: 0!important;
+}
+
+.rotateIcon{
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+}
