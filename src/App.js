@@ -116,16 +116,16 @@ function CustomToolbar() {
     <Box sx={{ flexGrow: 1 }}>
       <GridToolbarContainer sx={{ diplay: "flex", flexDirection: "column" }}>
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <GridToolbarColumnsButton
               className="noLabel"
               startIcon={<MenuRoundedIcon className="iconToolbar rotateIcon" />}
             />
           </Grid>
-          <Grid item xs={8} sx={{ textAlign: "center", fontWeight: "bold" }}>
+          <Grid item xs={6} sx={{ textAlign: "center", fontWeight: "bold" }}>
             <p>Paises</p>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={3} container justifyContent="flex-end">
             <Button>
               <SearchIcon
                 className="iconToolbar"
